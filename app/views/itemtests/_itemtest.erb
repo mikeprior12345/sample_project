@@ -1,0 +1,14 @@
+<%= form_with(model: itemtest) do |form| %>
+
+<td><%= itemtest.name %></td>
+<td><%= itemtest.description %></td>
+<td><%= itemtest.user.email %></td>
+<td><%= link_to 'Show', itemtest %></td>
+
+<% if itemtest.user_id == current_user.id %>
+        <td><%= link_to 'Edit', edit_itemtest_path(itemtest) %></td>
+        <td><%= link_to 'Destroy', itemtest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+      <% end %>
+  </tr>
+<% end %>

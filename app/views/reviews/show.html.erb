@@ -1,0 +1,7 @@
+<h1>Review in <%= @itemtest.name %></h1>
+<p>
+<b>Review details:</b>
+<%= @review.details %>
+</p>
+<%= link_to 'Edit', edit_itemtest_review_path(@itemtest, @review) %> |
+<%= link_to 'Back', itemtest_reviews_path(@itemtest) %>

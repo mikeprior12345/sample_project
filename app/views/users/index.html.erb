@@ -1,0 +1,27 @@
+<table>
+<p></p>
+<p></p>
+     <br>
+      </br>
+      <br>
+      </br>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Admin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+
+<% @users.each do |user| %>
+     <% if user.email != "mike.prior@optum.com" %>
+      <tr>
+      <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <td><%= link_to 'Toggle Admin', toggleadmin_user_path(user), method: :put, data: { confirm: 'Change Admin Status?' } %></td>
+        <td><%= link_to 'Delete User', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>

@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20220305181525_add_admin_to_users_2.rb

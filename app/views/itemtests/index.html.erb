@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <h1>Book Reviews</h1> -->
+<p></p>
+<!--<table> -->
+<table class="table">
+  <thead>
+       <br>
+      </br>
+      <br>
+      </br>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Created By</th> 
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+ 
+
+    <% @itemtests.each do |itemtest| %>
+      <tr>
+        <td><%= itemtest.name %></td>
+        <td><%= itemtest.description %></td>
+        <td><%= itemtest.alias %></td>
+
+        
+                <% if itemtest.image.attached? %>
+        <td><%= image_tag itemtest.image.variant(resize_to_fit: [50, 50]) %></td>
+                <% else%>
+                <%end%>
+                <td><%= link_to 'Show', itemtest %></td>
+        <% if itemtest.user_id == current_user.id || current_user.admin? %>
+        <td><%= link_to 'Edit', edit_itemtest_path(itemtest) %></td>
+        <td><%= link_to 'Destroy', itemtest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+      <% end %>
+      </tr>
+      
+    <% end %>
+      </tbody>
+</table>
+
+<% if !current_user.admin? %>
+<%= link_to 'New Book', new_itemtest_path %>
+<% end %>
+<p></p>
+<p><%= index_item_count %></p>
+<p><%= index_show_country_city %></p>
+<p></p>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?forceLang=en&tracking=1&always=1&hideDetailsBtn=1&remember=Autodetect&privacyPage=Default%20(black)"></script>
+
+

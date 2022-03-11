@@ -1,0 +1,27 @@
+<h1>Reviews#index</h1>
+<p></p>
+<h1>Reviews in <%= @itemtest.name %></h1>
+<table>
+<tr>
+<th>Review details</th>
+</tr>
+<% for review in @reviews %>
+<tr>
+<td><%= review.details %></td>
+<td><%= link_to 'Show', itemtest_review_path(@itemtest, review)
+%></td>
+<% if current_user.admin? %>
+
+<td><%= link_to 'Edit', edit_itemtest_review_path(@itemtest, review)
+%></td>
+<td><%= link_to 'Destroy', itemtest_review_path(@itemtest, review),
+:confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+        <% else %>
+      <% end %>
+<% end %>
+</table>
+<br />
+<%= link_to 'New review', new_itemtest_review_path(@itemtest) %>
+<%= link_to 'Back to itemtest', @itemtest %>
+
